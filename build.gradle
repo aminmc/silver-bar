@@ -1,0 +1,26 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+
+group 'io.arctech.solutions'
+version '1.0-SNAPSHOT'
+
+
+final javaVersion = 1.8
+final sourceCompatability = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    afterTest { desc, result ->
+        println "Test ${desc.name} in [${desc.className}] executed with result: ${result.resultType} in ${result.endTime - result.startTime} ms"
+    }
+}
+
+dependencies {
+    compileOnly('org.projectlombok:lombok:1.16.12')
+    testCompile('junit:junit:4.11')
+}
